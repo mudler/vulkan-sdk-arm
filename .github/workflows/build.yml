@@ -77,7 +77,7 @@ jobs:
           libxml2-dev wayland-protocols
 
       - name: 🔍 Get latest version of Vulkan SDK
-        run: echo "VK_SDK_LATEST_VERSION=$(curl -s https://vulkan.lunarg.com/sdk/latest/warm.json | jq -r '.warm')" >> $GITHUB_ENV
+        run: echo "VK_SDK_LATEST_VERSION=$(curl -s https://vulkan.lunarg.com/sdk/latest/linux.json | jq -r '.warm')" >> $GITHUB_ENV
 
       - name: 🔍 Get latest version of vulkan-sdk-arm on Github Releases
         run: echo "GH_LATEST_RELEASE_VERSION=$(curl -s https://api.github.com/repos/jakoch/vulkan-sdk-arm/releases/latest | jq -r '.tag_name')" >> $GITHUB_ENV
