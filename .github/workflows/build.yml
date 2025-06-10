@@ -116,13 +116,13 @@ jobs:
             vulkan-loader \
             vulkan-validationlayers \
             vulkan-extensionlayer \
-            vulkan-tools
+            vulkan-tools \
+            shaderc
 
 # do we need to build the following?
 #  headers \
 #  loader \
 #  layers \
-#  shaderc \
 #  spirv-tools \
 #  glslang \
 #  spirv-cross \
