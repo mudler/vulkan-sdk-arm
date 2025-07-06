@@ -80,7 +80,7 @@ jobs:
         run: echo "VK_SDK_LATEST_VERSION=$(curl -s https://vulkan.lunarg.com/sdk/latest/linux.json | jq -r '.linux')" >> $GITHUB_ENV
 
       - name: 🔍 Get latest version of vulkan-sdk-arm on Github Releases
-        run: echo "GH_LATEST_RELEASE_VERSION=$(curl -s https://api.github.com/repos/jakoch/vulkan-sdk-arm/releases/latest | jq -r '.tag_name')" >> $GITHUB_ENV
+        run: echo "GH_LATEST_RELEASE_VERSION=$(curl -s https://api.github.com/repos/mudler/vulkan-sdk-arm/releases/latest | jq -r '.tag_name')" >> $GITHUB_ENV
 
       # Check if there is no existing release or if the latest version is different
       # -z "$GH_LATEST_RELEASE_VERSION":
