@@ -176,7 +176,7 @@ jobs:
       # The title is "vulkansdk-arm-1.2.3.4".
       # Step 1: Create a new release tag, if not exists.
       - name: 📦 🚀 Create Vulkan SDK Release
-        #if: (env.NEW_VK_SDK_VERSION == 'true' && github.event_name == 'schedule') || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/'))
+        if: (env.NEW_VK_SDK_VERSION == 'true' && github.event_name == 'schedule') || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/'))
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
