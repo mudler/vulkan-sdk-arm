@@ -22,6 +22,11 @@ on:
     # Run the workflow weekly on Sunday at 00:00 UTC.
     - cron: '0 0 * * 0'
 
+# Cancel in-progress jobs when pushing to the same branch.
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+
 jobs:
 
 # -----------------------------------------------------------------------------
@@ -32,6 +37,9 @@ jobs:
 
     name: Build on ${{ matrix.OS }}
     runs-on: ${{ matrix.OS }}
+
+    # Do not run the workflow if the actor is dependabot or if the PR is from a fork.
+    if: ${{ ! (startsWith(github.actor, 'dependabot') || github.event.pull_request.head.repo.fork ) }}
 
     strategy:
       fail-fast: false
@@ -47,7 +55,7 @@ jobs:
 
     steps:
       - name: 🤘 Checkout Code
-        uses: actions/checkout@v4 # https://github.com/actions/checkout
+        uses: actions/checkout@v5 # https://github.com/actions/checkout
 
       - name: 🔽 Setup Build Environment
         run: |
